@@ -44,7 +44,7 @@ public class WindowController {
             } else {
                 hideErrorMsg();
             }
-            updateWindow();
+            updateWindow(errorMsg);
         }
     }
 
@@ -58,7 +58,7 @@ public class WindowController {
             } else {
                 hideErrorMsg();
             }
-            updateWindow();
+            updateWindow(errorMsg);
         }
     }
 
@@ -72,7 +72,7 @@ public class WindowController {
             } else {
                 hideErrorMsg();
             }
-            updateWindow();
+            updateWindow(errorMsg);
         }
     }
 
@@ -86,7 +86,7 @@ public class WindowController {
             } else {
                 hideErrorMsg();
             }
-            updateWindow();
+            updateWindow(errorMsg);
         }
     }
 
@@ -102,10 +102,10 @@ public class WindowController {
     void updatePath(ActionEvent event) {
         String currentPath = currentPathTxt.getText();
         windowManagement = new WindowManagement(currentPath);
-        updateWindow();
+        updateWindow(null);
     }
 
-    private void updateWindow(){
+    private void updateWindow(String errorMsg){
         if(windowManagement!=null) {
             List<String> folders = windowManagement.getFolders();
             List<String> files = windowManagement.getFiles();
@@ -126,6 +126,11 @@ public class WindowController {
                 ObservableList<String> filesItems = FXCollections.observableArrayList(new ArrayList<>());
                 filesListView.setItems(filesItems);
                 showErrorMsg("ERROR SELECCIONANDO LA RUTA INDICADA");
+            }
+            if(errorMsg!=null && !errorMsg.isEmpty()){
+                showErrorMsg(errorMsg);
+            } else {
+                hideErrorMsg();
             }
         }
     }
