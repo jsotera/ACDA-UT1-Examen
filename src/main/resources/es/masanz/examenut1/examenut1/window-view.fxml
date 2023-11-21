@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="640.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.masanz.examenut1.examenut1.WindowController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <GridPane>
+     <columnConstraints>
+       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="420.66668701171875" minWidth="10.0" prefWidth="127.99998982747397" />
+       <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.3333333333333" minWidth="10.0" prefWidth="312.000010172526" />
+         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="407.3333333333333" minWidth="10.0" prefWidth="175.000020345052" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ruta actual:">
+            <GridPane.margin>
+               <Insets right="10.0" />
+            </GridPane.margin>
+         </Text>
+         <TextField fx:id="currentPathTxt" GridPane.columnIndex="1" />
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updatePath" text="Seleccionar ruta" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
+            <GridPane.margin>
+               <Insets left="10.0" right="10.0" />
+            </GridPane.margin>
+         </Button>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Carpeta:" GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets right="10.0" />
+            </GridPane.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Archivo:" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets right="10.0" />
+            </GridPane.margin>
+         </Text>
+         <TextField fx:id="folderNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <TextField fx:id="fileNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <children>
+               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createFolder" text="Crear" HBox.hgrow="ALWAYS">
+                  <HBox.margin>
+                     <Insets right="5.0" />
+                  </HBox.margin>
+               </Button>
+               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteFolder" text="Borrar" HBox.hgrow="ALWAYS">
+                  <HBox.margin>
+                     <Insets left="5.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <GridPane.margin>
+               <Insets left="10.0" right="10.0" />
+            </GridPane.margin>
+         </HBox>
+         <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <children>
+               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createFile" text="Crear" HBox.hgrow="ALWAYS">
+                  <HBox.margin>
+                     <Insets right="5.0" />
+                  </HBox.margin>
+               </Button>
+               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteFile" text="Borrar" HBox.hgrow="ALWAYS">
+                  <HBox.margin>
+                     <Insets left="5.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <GridPane.margin>
+               <Insets left="10.0" right="10.0" />
+            </GridPane.margin>
+         </HBox>
+      </children>
+   </GridPane>
+   <HBox prefHeight="250.0" prefWidth="200.0">
+      <children>
+         <VBox alignment="TOP_CENTER" minWidth="200.0" prefWidth="200.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Carpetas:" />
+               <ListView fx:id="foldersListView" minWidth="200.0" onKeyPressed="#selectFolderOnKeyPressed" onMouseClicked="#selectFolderOnMouseClicked" prefHeight="150.0" prefWidth="200.0" />
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Archivos:" />
+               <ListView fx:id="filesListView" onKeyPressed="#selectFileOnKeyPressed" onMouseClicked="#selectFileOnMouseClicked" prefHeight="200.0" prefWidth="200.0" />
+            </children>
+         </VBox>
+         <TextArea fx:id="fileSelectedContent" disable="true" maxWidth="1.7976931348623157E308" minWidth="200.0" prefHeight="200.0" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin>
+         </TextArea>
+      </children>
+   </HBox>
+   <Button mnemonicParsing="false" onAction="#updateFileSelectedContent" text="Actualizar contenido" />
+</VBox>
